@@ -72,7 +72,7 @@ server.get('/token', async (req, res) =>{
                 "email": data.email,
                 "id": data.id}
         info= querystring.stringify(info)
-        res.redirect(`http://localhost:3000/user:${info}`)
+        res.redirect(`https://swiftlist.dev/user:${info}`)
         
     })
     
