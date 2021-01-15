@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const server = express()
 const cors = require("cors")
@@ -9,9 +10,10 @@ server.use(express.json());
 server.use(express.urlencoded({extended: true}));
 server.use(cors());
 
-const client_id = '3b8c8f4d22f4418faa475baaf1a77ad6'
-const client_secret = 'dbb2f5c916814100a9c1da1bea2dede2'
+const client_id = `${process.env.CLIENT_ID}`
+const client_secret = `${process.env.CLIENT_SECRET}`
 const redirect_uri = 'https://swiftlist.herokuapp.com/token'
+
 let token = null
 let refresh_token = null
 let userId = ''
