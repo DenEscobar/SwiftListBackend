@@ -138,6 +138,7 @@ server.post("/playlist", async (req, res)=>{
 server.post("/topTracks", async (req, res) =>{
     tracks = []
     const id = req.body.id
+    console.log("Being sent in",id)
     await fetch(`https://api.spotify.com/v1/artists/${id}/top-tracks?country=from_token`,{
         headers:{
             "Authorization": `Bearer ${token}`
@@ -147,11 +148,10 @@ server.post("/topTracks", async (req, res) =>{
     .then(data =>{
         let temp_tracks = data["tracks"]
         for(let i=0; i<10; i++){
-            //console.log(temp_tracks[i].uri)
             tracks.push(temp_tracks[i].uri)
         }
     })
-    
+    console.log("after call is made", tracks)
     await fetch(`https://api.spotify.com/v1/playlists/${playlistId}/tracks`, {
         method: "POST",
         headers:{
