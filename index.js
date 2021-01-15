@@ -165,6 +165,7 @@ server.post("/topTracks", async (req, res) =>{
         console.log(data)
     })
     .catch(err => console.log(err))
+    tracks = []
 })
 
 server.listen(PORT, ()=>{
