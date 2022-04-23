@@ -85,7 +85,9 @@ server.get('/token', async (req, res) =>{
 ////////// Search for Artists////////
 
 server.post('/artist', async (req, res)=>{
+    console.log("test")
     const artists = req.body.artists;
+    console.log(artists)
     if(artists){
         await fetch(`https://api.spotify.com/v1/search?query=${artists}&type=artist&limit=1&market=from_token`,{
             headers:{
@@ -100,9 +102,8 @@ server.post('/artist', async (req, res)=>{
                 id: data.artists.items[0].id
             })
             .end()
-            
-        })
-    
+        .catch(err)
+        }) 
     }
 })
 
